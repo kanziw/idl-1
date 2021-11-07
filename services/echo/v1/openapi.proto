@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package echo.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/wrappers.proto";
+
+service OpenAPIService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {
+    option (google.api.http) = {
+      get: "/echo/v1/users/{user_id}"
+    };
+  }
+}
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message User {
+  string id = 1;
+  google.protobuf.StringValue nickname = 2;
+}
+
+message GetUserResponse {
+  User user = 1;
+}

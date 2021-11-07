@@ -1,4 +1,10 @@
 version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/ohmygrpc/idl/gen/go
+    except:
+      - buf.build/googleapis/googleapis
 plugins:
   - remote: buf.build/library/plugins/go:v1.27.1-1
     out: gen/go
@@ -23,7 +29,7 @@ plugins:
       - forceLong=string
       - esModuleInterop=true
       - env=node
-      - useOptionals=true
+      - useOptionals=false
       - outputEncodeMethods=true
       - outputJsonMethods=true
       - outputPartialMethods=true
